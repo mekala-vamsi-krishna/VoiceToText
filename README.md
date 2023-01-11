@@ -1,6 +1,4 @@
 # VoiceToText
-<p float="left">
-  <img src="/Users/raviyadav/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2023-01-11 at 07.29.47.png" width="100" />
-  <img src="/Users/raviyadav/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2023-01-11 at 07.30.05.png" width="100" /> 
-  <img src="/Users/raviyadav/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2023-01-11 at 07.30.14.png" width="100" />
-</p>
+
+<img class=mobile-image src="https://user-images.githubusercontent.com/68817698/211703141-fe83ab34-9895-4b2e-a22a-14d8e5b62440.png" width="300"/>
+
