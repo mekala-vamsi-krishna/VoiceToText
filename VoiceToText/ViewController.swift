@@ -138,17 +138,17 @@ class ViewController: UIViewController {
             self.lblText.text = "Say something, I'm listening!"
             self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
         }))
+        actionSheet.addAction(UIAlertAction(title: "Hindi", style: .default, handler: { _ in
+            self.title = "हिंदी मे बोलो"
+            self.languageButton.title = "Hindi"
+            self.lblText.text = "कुछ तो बोलो, मैं सुन रहा हूँ!"
+            self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "hi"))
+        }))
         actionSheet.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
-            self.title = "Speak in French"
+            self.title = "parle en francais"
             self.languageButton.title = "French"
             self.lblText.text = "direquelque chose, je t'écoute!"
             self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "fr-FR"))
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Hindi", style: .default, handler: { _ in
-            self.title = "Speak in Hindi"
-            self.languageButton.title = "Hindi"
-            self.lblText.text = "kuchh bolo, main sun raha hoon!"
-            self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "hi"))
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(actionSheet, animated: true)

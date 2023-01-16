@@ -33,11 +33,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="d06-4b-egb" firstAttribute="top" secondItem="mzx-Db-zDj" secondAttribute="bottom" constant="7" id="LCs-a7-2gk"/>
-                                    <constraint firstItem="d06-4b-egb" firstAttribute="centerY" secondItem="vbD-Wa-s0j" secondAttribute="centerY" id="dLZ-t6-5aF"/>
-                                    <constraint firstItem="d06-4b-egb" firstAttribute="centerX" secondItem="vbD-Wa-s0j" secondAttribute="centerX" id="eqH-XX-xVb"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
