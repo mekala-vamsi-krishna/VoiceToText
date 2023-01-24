@@ -58,6 +58,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6Bi-0i-9Gp">
+                        <barButtonItem key="leftBarButtonItem" image="square.on.square" catalog="system" id="JpH-pn-m1y">
+                            <color key="tintColor" red="0.0" green="1" blue="0.43591099560000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="copyButtonTapped:" destination="BYZ-38-t0r" id="hao-lT-baf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="English" id="VQH-he-hUD">
                             <color key="tintColor" red="0.015756598350000001" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -100,6 +106,7 @@
     </scenes>
     <resources>
         <image name="mic" width="800" height="800"/>
+        <image name="square.on.square" catalog="system" width="128" height="116"/>
         <namedColor name="Background">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

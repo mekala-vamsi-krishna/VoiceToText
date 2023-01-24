@@ -128,6 +128,7 @@ class ViewController: UIViewController {
         }
 
         self.lblText.text = "Say something, I'm listening!"
+        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "square.on.square")
     }
 
     @IBAction func changeLanguageTapped(_ sender: UIBarButtonItem) {
@@ -160,6 +161,12 @@ class ViewController: UIViewController {
         
         setupSpeech()
     }
+    
+    @IBAction func copyButtonTapped(_ sender: UIBarButtonItem) {
+        UIPasteboard.general.string = lblText.text
+        sender.image = UIImage(systemName: "checkmark.circle.fill")
+    }
+    
 }
 
 extension ViewController: SFSpeechRecognizerDelegate {
