@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         // Create instance of audio session to record voice
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSession.Category.record, mode: AVAudioSession.Mode.measurement, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.measurement, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("audioSession properties weren't set because of an error.")
@@ -91,6 +91,7 @@ class ViewController: UIViewController {
         }
 
         recognitionRequest.shouldReportPartialResults = true
+        recognitionRequest.requiresOnDeviceRecognition = false
 
         self.recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { [self] (result, error) in
 
@@ -138,18 +139,21 @@ class ViewController: UIViewController {
             self.languageButton.title = "English"
             self.lblText.text = "Say something, I'm listening!"
             self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+            self.btnStart.setTitle("Start Recording", for: .normal)
         }))
         actionSheet.addAction(UIAlertAction(title: "Hindi", style: .default, handler: { _ in
             self.title = "हिंदी मे बोलो"
             self.languageButton.title = "Hindi"
             self.lblText.text = "कुछ तो बोलो, मैं सुन रहा हूँ!"
             self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "hi"))
+            self.btnStart.setTitle("Start Recording", for: .normal)
         }))
         actionSheet.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
             self.title = "parle en francais"
             self.languageButton.title = "French"
             self.lblText.text = "direquelque chose, je t'écoute!"
             self.speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "fr-FR"))
+            self.btnStart.setTitle("Start Recording", for: .normal)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(actionSheet, animated: true)
