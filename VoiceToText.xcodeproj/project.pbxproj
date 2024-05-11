@@ -13,6 +13,9 @@
 		15DFED1C296303930073A8B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15DFED1A296303930073A8B4 /* Main.storyboard */; };
 		15DFED1E296303990073A8B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DFED1D296303990073A8B4 /* Assets.xcassets */; };
 		15DFED21296303990073A8B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15DFED1F296303990073A8B4 /* LaunchScreen.storyboard */; };
+		AC1CB2D12B7A33980007801F /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB2D02B7A33980007801F /* ScannerView.swift */; };
+		AC1CB2D32B7B5E270007801F /* ScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB2D22B7B5E270007801F /* ScanData.swift */; };
+		AC1CB2D72B7B5EA70007801F /* TextRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB2D62B7B5EA70007801F /* TextRecogniser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		15DFED1D296303990073A8B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15DFED20296303990073A8B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15DFED22296303990073A8B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC1CB2D02B7A33980007801F /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		AC1CB2D22B7B5E270007801F /* ScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanData.swift; sourceTree = "<group>"; };
+		AC1CB2D62B7B5EA70007801F /* TextRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecogniser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,40 @@
 			children = (
 				15DFED14296303930073A8B4 /* AppDelegate.swift */,
 				15DFED16296303930073A8B4 /* SceneDelegate.swift */,
-				15DFED18296303930073A8B4 /* ViewController.swift */,
+				ACFB68EC2B95FD2B00D29415 /* Model */,
+				ACFB68ED2B95FD3100D29415 /* View */,
+				ACFB68EE2B95FD3800D29415 /* Controller */,
 				15DFED1A296303930073A8B4 /* Main.storyboard */,
 				15DFED1D296303990073A8B4 /* Assets.xcassets */,
 				15DFED1F296303990073A8B4 /* LaunchScreen.storyboard */,
 				15DFED22296303990073A8B4 /* Info.plist */,
 			);
 			path = VoiceToText;
+			sourceTree = "<group>";
+		};
+		ACFB68EC2B95FD2B00D29415 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1CB2D22B7B5E270007801F /* ScanData.swift */,
+				AC1CB2D62B7B5EA70007801F /* TextRecogniser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACFB68ED2B95FD3100D29415 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC1CB2D02B7A33980007801F /* ScannerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACFB68EE2B95FD3800D29415 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				15DFED18296303930073A8B4 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1CB2D72B7B5EA70007801F /* TextRecogniser.swift in Sources */,
 				15DFED19296303930073A8B4 /* ViewController.swift in Sources */,
 				15DFED15296303930073A8B4 /* AppDelegate.swift in Sources */,
+				AC1CB2D32B7B5E270007801F /* ScanData.swift in Sources */,
 				15DFED17296303930073A8B4 /* SceneDelegate.swift in Sources */,
+				AC1CB2D12B7A33980007801F /* ScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

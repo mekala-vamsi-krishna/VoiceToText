@@ -5,10 +5,12 @@
 //  Created by Mekala Vamsi Krishna on 02/01/23.
 //
 
+// MARK: ViewController
 import UIKit
 import Speech
 import AVKit
 import SwiftUI
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     var recognitionRequest : SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask : SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
+    let synthesizer = AVSpeechSynthesizer()
     
     private var texts:[ScanData] = []
     private var showScannerSheet = false
@@ -84,6 +87,9 @@ class ViewController: UIViewController {
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("audioSession properties weren't set because of an error.")
+            let alert = UIAlertController(title: "Error", message: "audiosession properties weren't set because of an error", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
         }
 
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -130,12 +136,25 @@ class ViewController: UIViewController {
             try self.audioEngine.start()
         } catch {
             print("audioEngine couldn't start because of an error.")
+            let alert = UIAlertController(title: "Error", message: "audio engine couldn't start because of an error", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
         }
 
         self.lblText.text = "Say something, I'm listening!"
         navigationItem.leftBarButtonItem?.image = UIImage(systemName: "square.on.square")
     }
 
+    @IBAction func speakerButtonTapped(_ sender: UIBarButtonItem) {
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        } else {
+            let speechUtterance = AVSpeechUtterance(string: lblText.text)
+            speechUtterance.rate = AVSpeechUtteranceDefaultSpeechRate
+            synthesizer.speak(speechUtterance)
+        }
+    }
+    
     @IBAction func changeLanguageTapped(_ sender: UIBarButtonItem) {
         let actionSheet = UIAlertController(title: "Choose Langauge", message: "", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "English", style: .default, handler: { _ in
@@ -197,7 +216,9 @@ class ViewController: UIViewController {
                 }
             } else {
                 // Handle the case where no text is recognized
-                print("No text recognized")
+                let alert = UIAlertController(title: "Empty Page", message: "no text is recognised from the image", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
             }
         }
         
