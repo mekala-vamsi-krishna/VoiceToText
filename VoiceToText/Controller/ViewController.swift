@@ -8,17 +8,21 @@
 import UIKit
 import Speech
 import AVKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var btnStart : UIButton!
-    @IBOutlet weak var lblText : UILabel!
+    @IBOutlet weak var lblText : UITextView!
     @IBOutlet weak var languageButton: UIBarButtonItem!
     
     var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     var recognitionRequest : SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask : SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
+    
+    private var texts:[ScanData] = []
+    private var showScannerSheet = false
 
     @IBAction func btnStartSpeechToText(_ sender: UIButton) {
 
@@ -162,8 +166,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Speak in English"
-        
         setupSpeech()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if showScannerSheet {
+            presentScannerViewController()
+        }
     }
     
     @IBAction func copyButtonTapped(_ sender: UIBarButtonItem) {
@@ -171,6 +181,29 @@ class ViewController: UIViewController {
         sender.image = UIImage(systemName: "checkmark.circle.fill")
     }
     
+    @IBAction func scanButtonTapped(_ sender: UIBarButtonItem) {
+        presentScannerViewController()
+    }
+    
+    private func presentScannerViewController() {
+        let scannerView = ScannerView { textPerPage in
+            // Handle the recognized text as needed
+            if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines) {
+                // Process the recognized text, update UI, or perform any other actions
+                let newScanData = ScanData(content: outputText)
+                self.texts.append(newScanData)
+                DispatchQueue.main.async {
+                    self.lblText.text = newScanData.content
+                }
+            } else {
+                // Handle the case where no text is recognized
+                print("No text recognized")
+            }
+        }
+        
+        let hostingController = UIHostingController(rootView: scannerView)
+        present(hostingController, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: SFSpeechRecognizerDelegate {
